@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +16,20 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      initialRoute: LoginView.id,
+      home: xd(),
+    );
+  }
+}
+
+class xd extends StatelessWidget {
+  const xd({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('asdsadas'),
+      ),
     );
   }
 }

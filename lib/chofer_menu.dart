@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'dart:async';
 
-void main() {
-  runApp(const MyApp());
-}
-
 var bucleLocation = true;
 
 class MyApp extends StatelessWidget {
@@ -16,13 +12,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.dark(useMaterial3: true),
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required onThemeSelected});
+  const HomePage({
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -50,7 +48,7 @@ class _HomePageState extends State<HomePage> {
         print('gps desactivado');
         timer.cancel();
       }
-      print(position);
+      print(position.timestamp);
       print(position.accuracy);
     });
 
