@@ -3,8 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-
-void main() => runApp(const MyApp());
+import 'package:http/http.dart' as http;
 
 const MAPBOX_STYLE = 'mapbox/satellite-streets-v12';
 const MAPBOX_ACCESS_TOKEN =
