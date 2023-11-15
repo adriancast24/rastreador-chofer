@@ -7,12 +7,12 @@ import 'package:http/http.dart' as http;
 
 const MAPBOX_STYLE = 'mapbox/satellite-streets-v12';
 const MAPBOX_ACCESS_TOKEN =
-    'pk.eyJ1IjoiYWRyaWFuMjQxMSIsImEiOiJjbG9vcGQ2cDkwMjVtMmlucXgyaGU3eng5In0.ORQLH2W-crQxenubWZTRKQ';
+    'pk.eyJ1IjoicGl0bWFjIiwiYSI6ImNsY3BpeWxuczJhOTEzbnBlaW5vcnNwNzMifQ.ncTzM4bW-jpq-hUFutnR1g';
 
 final myposition = LatLng(9.527154, -69.247328);
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Map extends StatelessWidget {
+  const Map({super.key});
 
   @override
   Widget build(BuildContext context) {

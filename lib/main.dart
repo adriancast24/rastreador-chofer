@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'chofer_menu.dart';
+import 'radar_chofer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,8 +49,11 @@ class menu extends StatelessWidget {
             children: [
               const SizedBox(),
               OutlinedButton(
-                  onPressed: () {},
-                  child: const Text('desactivar localizador')),
+                  onPressed: () {
+                    var push = Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Map()));
+                  },
+                  child: const Text('ir a mapa de localizacion')),
             ],
           )
         ],

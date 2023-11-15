@@ -1,8 +1,7 @@
 import 'dart:convert';
-
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'dart:async';
 import 'package:http/http.dart' as http;
 
 var bucleLocation = true;
@@ -52,29 +51,23 @@ class _HomePageState extends State<HomePage> {
         print('gps desactivado');
         timer.cancel();
       }
-      print(position);
-      print(position.timestamp);
-      print(position.accuracy);
 
-      String _response = '';
+      Future<http.Response> postlocation(
+          double latitud, double longitud, int choferubi) {
+        return http.post(
+          Uri.parse('http://192.168.1.113/api/ubicacion/'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(<String, dynamic>{
+            'latitud': latitud,
+            'longitud': longitud,
+            'choferubi': choferubi,
+          }),
+        );
+      }
 
-      const String url = 'http://127.0.0.1:5000/api/';
-      final Map<String, String> headers = {'Content-Type': 'application/json'};
-      final Map<String, dynamic> body = {
-        'nombre': 1,
-        'longitud': position.longitude,
-        'latitud': position.latitude,
-      };
-
-      final http.Response response = await http.post(
-        Uri.parse(url),
-        headers: headers,
-        body: jsonEncode(body),
-      );
-
-      setState(() {
-        _response = 'Response: ${response.body}';
-      });
+      postlocation(position.latitude, position.longitude, 1);
     });
 
     //var positionvehicle = position;
