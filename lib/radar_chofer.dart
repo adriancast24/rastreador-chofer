@@ -5,11 +5,10 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:http/http.dart' as http;
 
-const MAPBOX_STYLE = 'mapbox/satellite-streets-v12';
-const MAPBOX_ACCESS_TOKEN =
-    'pk.eyJ1IjoicGl0bWFjIiwiYSI6ImNsY3BpeWxuczJhOTEzbnBlaW5vcnNwNzMifQ.ncTzM4bW-jpq-hUFutnR1g';
 
-final myposition = LatLng(9.527154, -69.247328);
+
+
+final myposition = LatLng(9.527260454515105, -69.24898527183468);
 
 class Map extends StatelessWidget {
   const Map({super.key});
@@ -17,6 +16,7 @@ class Map extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Material App',
       theme: ThemeData(useMaterial3: true, brightness: Brightness.dark),
       home: Scaffold(
@@ -37,12 +37,9 @@ class Map extends StatelessWidget {
             ),
             children: [
               TileLayer(
-                  urlTemplate:
-                      'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
-                  additionalOptions: const {
-                    'accessToken': MAPBOX_ACCESS_TOKEN,
-                    'id': MAPBOX_STYLE,
-                  }),
+                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                
+              ),
               MarkerLayer(
                 markers: [
                   Marker(
@@ -65,11 +62,10 @@ class myLocationMaker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
-      width: 40,
-      decoration: BoxDecoration(
-        color: Colors.deepPurple,
-        shape: BoxShape.circle,
+      child: Icon(
+        Icons.local_shipping,
+        color: Colors.red,
+        size: 30,
       ),
     );
   }
